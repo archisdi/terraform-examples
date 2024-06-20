@@ -26,12 +26,21 @@ Provisioning Tools
         - Terraform
         - CloudFormation
 
+**General Notes**
+- terraform uses HCL, hashicorp configuration language to define the infrastructure resources as block of codes.
+- the configuration file uses .tf
+- terraform store the state of real life infrastructure as .tfstate
+- by default terraform install the latest version of the providers
+- a file can contains multiple providers, and every time a new provider is used, it has to be initialize with terraform init
+- variable can be read from system env by adding "TF_VAR_" prefix
+
 **3 Step to provision**
 - terraform init
 - terraform plan
 - terraform apply
 
-**General Notes**
-- terraform uses HCL, hashicorp configuration language to define the infrastructure resources as block of codes.
-- the configuration file uses .tf
-- terraform store the state of real life infrastructure as .tfstate
+**3 Tiers of Providers**
+- Official
+- Partner
+- Community
+
