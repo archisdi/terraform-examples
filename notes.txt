@@ -1,0 +1,72 @@
+**There are 3 types of IaC tools**
+
+Configuration Management
+    are designed to install and manage software,
+    maintaining standard structures,
+    version controlled,and are idempotent.
+    Examples:
+        - Ansible
+        - Puppet
+        - Salt Stack
+
+Server Templating
+    Pre-installed software and dependencies,
+    for creating virtual machines or containers,
+    are immutable infrastrucfure.
+    Examples:
+        - Docker
+        - Packer
+        - Vagrant
+
+Provisioning Tools
+    Deploy immutable infrasctructure resources,
+    such as servers, databases, network components, etc,
+    it has multiple providers.
+    Examples:
+        - Terraform
+        - CloudFormation
+
+**General Notes**
+- terraform uses HCL, hashicorp configuration language to define the infrastructure resources as block of codes.
+- the configuration file uses .tf
+- terraform store the state of real life infrastructure as .tfstate
+- by default terraform install the latest version of the providers
+- a file can contains multiple providers, and every time a new provider is used, it has to be initialize with terraform init
+- variable can be read from system env by adding "TF_VAR_" prefix
+
+**3 Tiers of Providers**
+- Official
+- Partner
+- Community
+
+**Terraform State**
+- every time terraform apply is executed, it will create a state file with .tfstate extension
+- the state file will store the last condition of the infrasctructure to be compared in later operation
+- we can make terraform to refer to the state file alone without it refreshing state every time with -refresh=false flag
+- state can also be stored on remote storage such as amazon s3, allows the engineer to collaborate with a fault-tolerant manner
+- terraform state contains sensitive information, it is not recommended to store it on version control system
+
+**Terraform Commands**
+- terraform init        ->  initialize the project
+- terraform plan        ->  show the changes to be applied to the infrastructure
+- terraform apply       ->  apply the changes to the infrastructure
+- terraform show        ->  print the current state of the resources
+- terraform validate    ->  validate the syntax of the configuration files
+- terraform fmt         ->  format the configuration files into canonical format
+- terraform providers   ->  list all the providers used in the project
+- terraform output      ->  show the output of the resources
+- terraform refresh     ->  refresh the state of the resources if it is not up to date
+- terraform graph       ->  show the graph of the resources in DOT format
+- terraform destroy     ->  destroy the resources created by terraform
+
+**Mutable vs Immutable Infrastructure**
+- mutable infrastructure is the traditional way of managing infrastructure, where the resources are updated in place
+- immutable infrastructure is the modern way of managing infrastructure, where the resources are replaced with new resources every time a change is made
+
+**Data Sources**
+- data sources are used to fetch information from the infrastructure, such as AMIs, VPCs, subnets, etc and are read only
+- data sources are defined using the data block
+
+**Meta-Arguments**
+- is used to define the behavior of the resources
+- common Meta-Arguments such as depends_on, count, for_each, provider, lifecycle, etc
