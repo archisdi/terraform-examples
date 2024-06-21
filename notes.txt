@@ -80,3 +80,11 @@ Provisioning Tools
 - terraform state mv    ->  move a resource to a new address in the state file
 - terraform state pull  ->  pull the state file from the remote storage
 - terraform state push  ->  push the state file to the remote storage
+
+**Terraform Provisioners**
+- provisioners are used to execute scripts on the resources after they are created
+- provisioners are defined using the provisioner block
+- there are 3 types of provisioners, local-exec, remote-exec, and file
+- it is not recommended to use provisioners, as they are not idempotent
+- it is recommended to use configuration management tools such as Ansible, Puppet, or Chef
+- when a provisioner fails, terraform will not rollback the changes and 
