@@ -45,6 +45,9 @@ Provisioning Tools
 - we can make terraform to refer to the state file alone without it refreshing state every time with -refresh=false flag
 - state can also be stored on remote storage such as amazon s3, allows the engineer to collaborate with a fault-tolerant manner
 - terraform state contains sensitive information, it is not recommended to store it on version control system
+- terrafirm will lock the state file when it is being used, to prevent multiple users from modifying the state file at the same time
+- state locking can only be done on remote storage
+- remote storage also provide a secure way to store the state file, and it can be encrypted
 
 **Terraform Commands**
 - terraform init        ->  initialize the project
@@ -70,3 +73,10 @@ Provisioning Tools
 **Meta-Arguments**
 - is used to define the behavior of the resources
 - common Meta-Arguments such as depends_on, count, for_each, provider, lifecycle, etc
+
+**Terraform State Commands**
+- terraform state list  ->  list all the resources in the state file
+- terraform state show  ->  show the details of a specific resource in the state file
+- terraform state mv    ->  move a resource to a new address in the state file
+- terraform state pull  ->  pull the state file from the remote storage
+- terraform state push  ->  push the state file to the remote storage
