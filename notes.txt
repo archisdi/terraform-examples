@@ -33,6 +33,7 @@ Provisioning Tools
 - by default terraform install the latest version of the providers
 - a file can contains multiple providers, and every time a new provider is used, it has to be initialize with terraform init
 - variable can be read from system env by adding "TF_VAR_" prefix
+- a resource will be marked as tainted if it is modified after it is created or if it fails to be created
 
 **3 Tiers of Providers**
 - Official
@@ -88,3 +89,29 @@ Provisioning Tools
 - it is not recommended to use provisioners, as they are not idempotent
 - it is recommended to use configuration management tools such as Ansible, Puppet, or Chef
 - when a provisioner fails, terraform will not rollback the changes and 
+
+** Taint and Import Commands**
+- terraform taint       ->  mark a resource as tainted
+- terraform untaint     ->  remove the tainted mark from a resource
+- terraform import      ->  import an existing resource to the state file
+
+**Debugging Terraform**
+- to enable debug mode, set TF_LOG=DEBUG, it will show the debug logs when terraform is executed
+- there are 5 levels of logging, TRACE, DEBUG, INFO, WARN, ERROR
+- to store logs in a file, set TF_LOG_PATH=/path/to/file.log
+
+**Terraform Modules**
+- modules are used to organize the configuration files into reusable components
+- modules are defined using the module block
+- modules can be stored locally or remotely
+
+**Terraform Functions**
+- functions are used to manipulate the data in the configuration files
+- type of functions such as string, list, map, file, etc
+
+**Terraform Logical Operators**
+- logical operators are used to combine multiple conditions in the configuration files
+- type of logical operators such as and, or, not
+
+**Terraform Workspace**
+- to create a new workspace, use terraform workspace new <name> command
